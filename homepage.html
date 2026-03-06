@@ -25,6 +25,10 @@
         -webkit-box-orient: vertical;
         overflow: hidden;
       }
+
+      .hide {
+        display: none;
+      }
     </style>
     <title>HomePage | GitHub Issues Tracker</title>
   </head>
@@ -51,7 +55,7 @@
             id="search-btn"
             class="btn btn-primary text-center text-sm md:text-base"
           >
-            New Issue +
+            Search
           </button>
         </div>
       </div>
@@ -60,7 +64,7 @@
     <!-- sections -->
     <div class="mt-[40px] mx-4 sm:mx-8 md:mx-16 lg:mx-[245px] bg-slate-200 p-5">
       <div>
-        <div>
+        <div id="allBtn">
           <button id="btn-all" class="btn btn-primary">All</button>
           <button
             id="btn-opened"
@@ -184,6 +188,21 @@
         <button>close</button>
       </form>
     </dialog>
+
+    <!-- loading waves -->
+
+    <section id="spinner" class="flex justify-center items-center py-10 hide">
+      <div
+        class="flex w-11/12 mx-auto flex-col gap-5 justify-center items-center"
+      >
+        <span class="loading loading-bars loading-xs"></span>
+        <span class="loading loading-bars loading-sm"></span>
+        <span class="loading loading-bars loading-md"></span>
+        <span class="loading loading-bars loading-lg"></span>
+        <span class="loading loading-bars loading-xl"></span>
+      </div>
+    </section>
+
     <script src="scripts/script.js"></script>
   </body>
 </html>

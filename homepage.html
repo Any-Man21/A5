@@ -18,29 +18,39 @@
       *::-webkit-scrollbar {
         display: none; /* Chrome, Safari, Opera */
       }
+      .clamp-2 {
+        display: -webkit-box !important;
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
     </style>
     <title>HomePage | GitHub Issues Tracker</title>
   </head>
   <body>
     <!-- navbar -->
-    <div class="navbar bg-base-100 shadow-sm">
-      <div class="flex-1 mx-20">
+    <div class="navbar bg-base-100 shadow-sm px-2 md:px-10">
+      <div class="flex-1">
         <div class="flex items-center">
-          <img src="assets/github-logo.png" alt="" />
-          <a class="btn btn-ghost text-[25px] font-bold"
+          <img class="w-8 h-8" src="assets/github-logo.png" alt="" />
+          <a class="btn btn-ghost text-base md:text-[25px] font-bold"
             >GitHub Issues Tracker</a
           >
         </div>
       </div>
-      <div class="flex gap-2 mx-20">
+      <div class="flex gap-2">
         <input
           id="input-search"
           type="text"
           placeholder="Search Issues"
-          class="input input-bordered w-24 md:w-auto"
+          class="input input-bordered w-24 sm:w-40 md:w-auto"
         />
         <div class="">
-          <button id="search-btn" class="btn btn-primary text-center">
+          <button
+            id="search-btn"
+            class="btn btn-primary text-center text-sm md:text-base"
+          >
             New Issue +
           </button>
         </div>
@@ -48,7 +58,7 @@
     </div>
 
     <!-- sections -->
-    <div class="mt-[60px] ml-[245px] mr-[245px] bg-slate-200 p-5">
+    <div class="mt-[40px] mx-4 sm:mx-8 md:mx-16 lg:mx-[245px] bg-slate-200 p-5">
       <div>
         <div>
           <button id="btn-all" class="btn btn-primary">All</button>
@@ -66,19 +76,22 @@
           </button>
         </div>
         <br /><br />
-        <div id="counter-containers" class="flex justify-between items-center">
+        <div
+          id="counter-containers"
+          class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4"
+        >
           <div class="flex gap-2">
             <img
-              class="w-15 bg-slate-50 rounded-full p-2"
+              class="w-12 h-12 bg-slate-50 rounded-full p-2 flex-shrink-0"
               src="assets/Aperture.png"
               alt=""
             />
             <h4>
-              <span id="counter" class="font-semibold text-[25px]"
+              <span id="counter" class="font-semibold text-xl md:text-[25px]"
                 >50 Issues</span
               >
               <br />
-              <span style="color: rgba(100, 116, 139, 1)"
+              <span class="text-sm" style="color: rgba(100, 116, 139, 1)"
                 >Track and manage your project issues</span
               >
             </h4>
@@ -105,10 +118,72 @@
 
     <section
       id="issueCards"
-      class="mt-[60px] ml-[245px] mr-[245px] bg-slate-100 p-5 grid grid-cols-4 mx-auto gap-5 items-stretch"
+      class="mt-[40px] mx-4 sm:mx-8 md:mx-16 lg:mx-[245px] bg-slate-100 p-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 items-stretch"
     >
       <!-- issues container -->
     </section>
+
+    <!-- modal -->
+
+    <dialog id="issue_modal" class="modal modal-bottom sm:modal-middle">
+      <div
+        class="modal-box w-11/12 max-w-3xl p-8 rounded-2xl border border-base-200"
+      >
+        <h3
+          id="modal-title"
+          class="text-3xl font-extrabold text-slate-800 mb-4"
+        ></h3>
+
+        <div class="flex flex-wrap items-center gap-3 mb-6">
+          <span
+            id="modal-status"
+            class="badge gap-1 text-white py-4 px-4 font-semibold uppercase"
+          ></span>
+
+          <span class="text-slate-500 text-sm flex items-center gap-1">
+            • Opened by <span id="modal-author" class="font-bold"></span> •
+            <span id="modal-date"></span>
+          </span>
+        </div>
+
+        <div id="modal-labels" class="flex gap-2 mb-8"></div>
+
+        <p
+          id="modal-description"
+          class="text-slate-600 leading-relaxed mb-8"
+        ></p>
+
+        <div
+          class="bg-slate-50 rounded-xl p-6 grid grid-cols-1 sm:grid-cols-2 gap-6 border border-slate-100"
+        >
+          <div>
+            <p class="text-slate-400 text-sm mb-1">Assignee:</p>
+            <p id="modal-assignee" class="text-slate-800 font-bold text-lg"></p>
+          </div>
+          <div>
+            <p class="text-slate-400 text-sm mb-1">Priority:</p>
+            <div
+              id="modal-priority"
+              class="badge text-white font-bold py-3 px-6 uppercase"
+            ></div>
+          </div>
+        </div>
+
+        <div class="modal-action mt-10">
+          <form method="dialog">
+            <button
+              class="btn btn-primary bg-indigo-600 hover:bg-indigo-700 border-none px-10 text-white rounded-xl"
+            >
+              Close
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <form method="dialog" class="modal-backdrop">
+        <button>close</button>
+      </form>
+    </dialog>
     <script src="scripts/script.js"></script>
   </body>
 </html>

@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login Page | GitHub Issues Tracker</title>
+    <!-- DaisyUI and Tailwind -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@5"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+      * {
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* IE/Edge */
+      }
+      *::-webkit-scrollbar {
+        display: none; /* Chrome, Safari, Opera */
+      }
+    </style>
+  </head>
+  <body class="min-h-screen max-w-md bg-base-200 mx-auto">
+    <main class="min-h-screen flex flex-col justify-center py-10">
+      <!-- logo -->
+      <div>
+        <div class="logo w-[200px] mx-auto flex justify-center">
+          <img src="assets/github-logo.png" alt="" />
+        </div>
+        <div>
+          <h2 class="font-semibold text-[24px] line-[29px] text-center mt-6">
+            GitHub Issues Tracker
+          </h2>
+          <p
+            class="text-4 font-400 line-[19px] text-center mt-1"
+            style="color: rgba(100, 116, 139, 1)"
+          >
+            Sign in to manage your issues
+          </p>
+        </div>
+      </div>
+
+      <!-- form -->
+
+      <div class="form pt-10">
+        <div
+          class="card bg-base-100 w-full max-w-sm shrink-0 shadow-xl hover:shadow-2xl mx-auto rounded-2xl"
+        >
+          <div class="card-body">
+            <fieldset class="fieldset">
+              <!-- username -->
+              <label class="label text-neutral font-bold mb-[12px]"
+                >Username</label
+              >
+              <input
+                id="input-username"
+                maxlength="5"
+                minlength="5"
+                type="text"
+                class="input rounded-full bg-base-200"
+                placeholder="Enter Username"
+              />
+              <p class="text-[14px] mt-2" style="color: rgba(74, 0, 255, 1)">
+                Default: admin
+              </p>
+
+              <!-- password -->
+              <label class="label text-neutral font-bold mb-[12px] mt-[16px]"
+                >Password</label
+              >
+              <input
+                id="input-password"
+                maxlength="8"
+                minlength="8"
+                type="password"
+                class="input rounded-full bg-base-200"
+                placeholder="Enter Password"
+              />
+              <p class="text-[14px] mt-2" style="color: rgba(74, 0, 255, 1)">
+                Default: admin123
+              </p>
+
+              <div><a class="link link-hover">Forgot Password?</a></div>
+              <button id="signIn-btn" class="btn btn-primary mt-4 rounded-full">
+                Sign In
+              </button>
+              <!-- or -->
+              <div>
+                <div class="divider">OR</div>
+                </button>
+              </div>
+              <div>
+                <p
+            class="text-4 font-400 line-[19px] text-center mt-1"
+            style="color: rgba(100, 116, 139, 1)"
+          >
+            Demo Credentials:</p>
+            <h3 class="font-bold text-4 text-center mt-[32px]">username: admin</h3>
+            <h3 class="font-bold text-4 text-center mt-[10px]">Password: admin123</h3>
+
+              </div>
+            </fieldset>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script src="scripts/signIn.js"></script>
+  </body>
+</html>

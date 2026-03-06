@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- DaisyUI and Tailwind -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@5"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+      * {
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* IE/Edge */
+      }
+      *::-webkit-scrollbar {
+        display: none; /* Chrome, Safari, Opera */
+      }
+    </style>
+    <title>HomePage | GitHub Issues Tracker</title>
+  </head>
+  <body>
+    <!-- navbar -->
+    <div class="navbar bg-base-100 shadow-sm">
+      <div class="flex-1 mx-20">
+        <div class="flex items-center">
+          <img src="assets/github-logo.png" alt="" />
+          <a class="btn btn-ghost text-[25px] font-bold"
+            >GitHub Issues Tracker</a
+          >
+        </div>
+      </div>
+      <div class="flex gap-2 mx-20">
+        <input
+          id="input-search"
+          type="text"
+          placeholder="Search Issues"
+          class="input input-bordered w-24 md:w-auto"
+        />
+        <div class="">
+          <button id="search-btn" class="btn btn-primary text-center">
+            New Issue +
+          </button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -30,19 +30,36 @@ async function displayIssues() {
     const data = await res.json();
     const issues = data.data;
     console.log(issues);
+    
     issuesContainer.innerHTML = '';
     issues.forEach(issue => {
+      const topBorderColor = issue.status === 'open' ? 'bg-emerald-500' : 'bg-purple-500';
+
+      // Optional: You can also update the inner icon circle color to match
+      const circleTheme = issue.status === 'open' ? 'emerald' : 'purple';
+      // 1. DETERMINE STATUS IMAGE AND TOP BAR COLOR
+      const statusImg = issue.status === 'open' 
+    ? 'assets/Open-Status.png' 
+    : 'assets/Closed- Status .png';
+
+      // Optional: Change the border color based on status (success/green for open, slate/gray for closed)
+      const circleColor = issue.status === 'open' ? 'success' : 'purple-100';
       const card = document.createElement("div");
-      card.classList.add("card", "bg-base-100", "shadow-xl", "hover:shadow-2xl", "h-full");
+      card.classList.add("card", "bg-base-100", "shadow-xl", "hover:shadow-2xl", "h-full", "rounded-2xl");
       card.innerHTML = `
-      <div class="w-full h-full bg-base-100 shadow-sm border border-base-200 overflow-hidden flex flex-col">
-  <div class="h-1.5 bg-success w-full"></div>
+      <div class="w-full h-full bg-base-100 shadow-sm border border-base-200 overflow-hidden flex flex-col rounded-2xl">
+  <div class="h-1.5 ${topBorderColor} bg-success w-full"></div>
 
   <div class="card-body p-5 flex flex-col flex-1">
     <div class="flex justify-between items-start mb-2">
       <div class="avatar placeholder">
-        <div class="bg-success/10 text-success rounded-full w-8 border-2 border-success border-dashed">
-          </div>
+        <div class="bg-${circleColor}/10 text-${circleColor} rounded-full w-10 h-10 border-2 border-${circleColor} border-dashed flex items-center justify-center overflow-hidden">
+    <img 
+      src="${statusImg}" 
+      alt="${issue.status}" 
+      class="w-6 h-6 object-contain" 
+    />
+  </div>
       </div>
       <div class="badge badge-error badge-outline font-bold py-3">${issue.priority}</div>
     </div>

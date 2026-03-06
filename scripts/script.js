@@ -239,3 +239,18 @@ btnClosed.addEventListener('click', () => {
 });
 
 displayIssues();
+
+
+document.getElementById('search-btn').addEventListener('click',()=>{
+  const input= document.getElementById('input-search');
+  const searchValue = input.value.trim().toLowerCase();
+
+  fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${searchValue}`)
+  .then(res=>res.json())
+  .then(data=>{
+    const allIssues = data.data;
+    const filterIssues = allIssues.filter((issue) => issue.title.toLowerCase().includes(searchValue) || issue.description.toLowerCase().includes(searchValue));
+    renderIssues(filterIssues);
+  })
+
+} )
